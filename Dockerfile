@@ -1,8 +1,9 @@
-FROM nawhath/php7.3-apache:1.2
+FROM php:7.3-apache
+RUN apt-get update &&  apt-get install -y libzip-dev zlib1g-dev && docker-php-ext-install zip pdo_mysql mysqli 
 
 RUN apt update && apt install -y libc-client-dev libkrb5-dev libpng-dev && rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo
 
 RUN docker-php-ext-install gd
 
